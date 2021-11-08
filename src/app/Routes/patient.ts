@@ -1,5 +1,5 @@
 import * as express from 'express'
-import PatientController from './patientController'
+import PatientController from '../Controllers/patient'
 
 const router = express.Router()
 
@@ -9,7 +9,7 @@ router.post('/', patientController.createPatient.bind(patientController))
 
 router.post('/:id', patientController.updatePatient.bind(patientController))
 
-router.get('/', patientController.getAllPatient.bind(patientController))
+router.get('/', patientController.getAll.bind(patientController))
 
 router.get('/:id', patientController.getPatient.bind(patientController))
 

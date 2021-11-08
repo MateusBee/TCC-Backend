@@ -1,4 +1,4 @@
-import Patient from './patientModel'
+import Patient from '../Models/Patient'
 import User from '../Models/User'
 
 export default class PatientService {

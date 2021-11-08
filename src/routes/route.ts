@@ -3,7 +3,7 @@ import AuthRouter from '../app/Routes/auth'
 import UserRouter from '../app/Routes/user'
 import MedicationRouter from '../app/Routes/medication'
 import FileRouter from '../app/Routes/file'
-import PatientRouter from '../app/patient/patientRouter'
+import PatientRouter from '../app/Routes/patient'
 import HealthcheckRouter from './healthcheck'
 
 const authMiddleware = require('../middlewares/auth')
@@ -17,7 +17,7 @@ router.use('/auth', AuthRouter)
 //router.use(authMiddleware)
 
 // Rotas que precisam estar autenticadas
-//router.use('/patient', PatientRouter)
+router.use('/patient', PatientRouter)
 
 router.use('/user', UserRouter)
 

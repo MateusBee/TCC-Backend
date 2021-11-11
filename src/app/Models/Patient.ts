@@ -9,6 +9,7 @@ const PatientSchema = new mongoose.Schema({
 	height: String,
 	phone: String,
 	comments: String,
+	url: String,
 	medication: [
 		{
 			medication_id: {

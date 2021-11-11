@@ -11,10 +11,6 @@ router.post('/:id', patientController.updatePatient.bind(patientController))
 
 router.get('/', patientController.getAll.bind(patientController))
 
-router.get('/:id', patientController.getPatient.bind(patientController))
-
-router.get('/user/:userid', patientController.getPatientByUser.bind(patientController))
-
 router.delete('/:id', patientController.deletePatient.bind(patientController))
 
 export default router

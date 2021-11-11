@@ -1,7 +1,6 @@
 import User from '../Models/User'
 import Address from '../Models/Address'
 import prhtml from '../views/emails/passwordRecovery'
-import PatientService from '../patient/patientService'
 
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
@@ -10,33 +9,11 @@ const mailer = require('../../modules/mailer')
 const authConfig = require('../../config/auth')
 
 export default class AuthController {
-    private _patientService: any
-
-    constructor() {
-        this._patientService = new PatientService()
-    }
     
     public generateToken(params = {}) {
         return jwt.sign(params, authConfig.secret, {
             expiresIn: 36000
         })
-    }
-
-    public async getUserByCpf(req: any, res: any) {
-        try {
-            let user = await this._patientService.getAll()
-
-            user = user.filter(u => u.user.cpf == req.params.cpf)
-            if(user.length > 0) {
-                user = user[0]
-                return res.json({user})
-            } else {
-                return res.status(400).send({error: 'Usuário não encontrado!'})
-            }
-        } catch(e) {
-            console.log(e)
-            return res.status(400).send({error: e})
-        }
     }
 
     public async authenticate(req: any, res: any) {

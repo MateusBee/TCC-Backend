@@ -1,13 +1,7 @@
-import PatientService from '../patient/patientService'
 import Patient from '../Models/Patient'
 import Address from '../Models/Address'
 
 export default class PatientController {
-    private _patientService: any
-
-    constructor() {
-        this._patientService = new PatientService()
-    }
 
     public async getAll(req: any, res: any) {
         try {
@@ -58,27 +52,6 @@ export default class PatientController {
             let ad = await Address.findOne({_id: address._id})
 
             return res.json({ patient: { ...patient._doc, address: ad }})
-        } catch(e) {
-            console.log(e)
-            return res.status(400).send({error: e})
-        }
-    }
-
-    public async getPatient(req: any, res: any) {
-        try {
-            let patient = await this._patientService.get(req.params.id)
-
-            return res.json({patient})
-        } catch(e) {
-            console.log(e)
-            return res.status(400).send({error: e})
-        }
-    }
-
-    public async getPatientByUser(req: any, res: any) {
-        try {
-            let patient = await this._patientService.getByUser(req.params.userid)
-            return res.json({patient})
         } catch(e) {
             console.log(e)
             return res.status(400).send({error: e})

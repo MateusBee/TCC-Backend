@@ -5,8 +5,6 @@ const router = express.Router()
 
 const authController = new AuthController()
 
-router.get('/user/:cpf', authController.getUserByCpf.bind(authController))
-
 router.post('/authenticate', authController.authenticate.bind(authController))
 
 router.post('/forgot-password', authController.forgotPassword.bind(authController))

@@ -13,6 +13,7 @@ export default class UserController {
             2: "Profissional da Área",
             3: "Familiar",
             4: "Administrador",
+            5: "Superusuário"
           };
       
           return type[s];

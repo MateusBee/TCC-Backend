@@ -19,16 +19,10 @@ const PatientSchema = new mongoose.Schema({
 			dose: String,
 			break_schedule: String, //intervalo intrajornada
 			instructions: String,
-			treatment: [
-				{
-					main_date: Date, //data/hora que deveria tomar
-					medicate_date: Date, //data/hora em que tomou
-					medicated: {
-						type: Boolean,
-						default: false
-					} // tomou no dia
-				}
-			],
+			start_date: {
+				type: Date,
+				default: Date.now
+			}
 		}
 	],
     createdAt: {

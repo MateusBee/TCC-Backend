@@ -1,5 +1,6 @@
 import Patient from '../Models/Patient'
 import Address from '../Models/Address'
+import Medication from '../Models/Medication'
 
 export default class PatientController {
 
@@ -10,6 +11,11 @@ export default class PatientController {
             for(let d of patients) {
                 let address = await Address.findOne({userId: d._id})
                 patients[patients.indexOf(d)] = { ...d._doc, address }
+
+                for(let m of d.medication) {
+                    let medication = await Medication.findOne({_id: m.medication_id})
+                    d.medication[d.medication.indexOf(m)] = { ...m._doc, medication_id: medication };
+                }
             }
 
             return res.json({ data: patients })
@@ -52,6 +58,18 @@ export default class PatientController {
             let ad = await Address.findOne({_id: address._id})
 
             return res.json({ patient: { ...patient._doc, address: ad }})
+        } catch(e) {
+            console.log(e)
+            return res.status(400).send({error: e})
+        }
+    }
+
+    public async updateMedication(req: any, res: any) {
+        try {
+
+            await Patient.updateOne({_id: req.params.id}, req.body)
+
+            return res.json({success: true})
         } catch(e) {
             console.log(e)
             return res.status(400).send({error: e})

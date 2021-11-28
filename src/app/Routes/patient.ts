@@ -9,6 +9,8 @@ router.post('/', patientController.createPatient.bind(patientController))
 
 router.post('/:id', patientController.updatePatient.bind(patientController))
 
+router.post('/:id/medication', patientController.updateMedication.bind(patientController))
+
 router.get('/', patientController.getAll.bind(patientController))
 
 router.delete('/:id', patientController.deletePatient.bind(patientController))

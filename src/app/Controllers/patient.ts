@@ -1,6 +1,7 @@
 import Patient from '../Models/Patient'
 import Address from '../Models/Address'
 import Medication from '../Models/Medication'
+import Ministration from '../Models/Ministration';
 
 export default class PatientController {
 
@@ -10,12 +11,11 @@ export default class PatientController {
 
             for(let d of patients) {
                 let address = await Address.findOne({userId: d._id})
-                patients[patients.indexOf(d)] = { ...d._doc, address }
-
-                for(let m of d.medication) {
-                    let medication = await Medication.findOne({_id: m.medication_id})
-                    d.medication[d.medication.indexOf(m)] = { ...m._doc, medication_id: medication };
+                let ministration = await Ministration.findOne({patient: d._id})
+                if (ministration) {
+                    ministration.medication = await Medication.findOne({_id: ministration.medication})
                 }
+                patients[patients.indexOf(d)] = { ...d._doc, address, medication: ministration }
             }
 
             return res.json({ data: patients })

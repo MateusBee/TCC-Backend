@@ -246,7 +246,7 @@ export default (token: any, username: any) => {
               <!-- start unsubscribe -->
               <tr>
                 <td align="center" bgcolor="#e9ecef" style="padding: 12px 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #666;">
-                  <p style="margin: 0;">AppName, Chapecó SC - 2020</p>
+                  <p style="margin: 0;">AppName, Chapecó SC - 2021</p>
                 </td>
               </tr>
               <!-- end unsubscribe -->

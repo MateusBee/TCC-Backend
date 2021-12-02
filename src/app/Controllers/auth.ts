@@ -22,9 +22,6 @@ export default class AuthController {
 
             const user = await User.findOne({ email }).select(`+password`)
 
-            console.log(password);
-            console.log(user);
-
             if(!user)
                 throw 'User not found!'
 
@@ -47,10 +44,10 @@ export default class AuthController {
     }
 
     public async forgotPassword(req: any, res: any) {
-        const { cpf } = req.body
+        const { email } = req.body
 
         try {
-            const user = await User.findOne({ cpf }).select('+password')
+            const user = await User.findOne({ email }).select('+password')
 
             if(!user)
                 throw 'User not found!'
@@ -87,10 +84,10 @@ export default class AuthController {
     }
 
     public async resetPassword(req: any, res: any) {
-        const { cpf, token, password } = req.body
+        const { email, token, password } = req.body
 
         try {
-            const user = await User.findOne({ cpf }).select('+passwordResetToken passwordResetExpires')
+            const user = await User.findOne({ email }).select('+passwordResetToken passwordResetExpires')
 
             if(!user)
                 throw 'User not found!'

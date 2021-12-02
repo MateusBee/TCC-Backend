@@ -10,21 +10,6 @@ const PatientSchema = new mongoose.Schema({
 	phone: String,
 	comments: String,
 	url: String,
-	medication: [
-		{
-			medication_id: {
-				type: mongoose.Schema.Types.ObjectId,
-				ref: 'Medication'
-			},
-			dose: String,
-			break_schedule: String, //intervalo intrajornada
-			instructions: String,
-			start_date: {
-				type: Date,
-				default: Date.now
-			}
-		}
-	],
     createdAt: {
         type: Date,
         default: Date.now

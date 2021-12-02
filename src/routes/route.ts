@@ -2,6 +2,7 @@ import * as express from 'express'
 import AuthRouter from '../app/Routes/auth'
 import UserRouter from '../app/Routes/user'
 import MedicationRouter from '../app/Routes/medication'
+import MinistrationRouter from '../app/Routes/ministration'
 import FileRouter from '../app/Routes/file'
 import PatientRouter from '../app/Routes/patient'
 import HealthcheckRouter from './healthcheck'
@@ -22,6 +23,8 @@ router.use('/patient', PatientRouter)
 router.use('/user', UserRouter)
 
 router.use('/medication', MedicationRouter)
+
+router.use('/ministration', MinistrationRouter)
 
 router.use('/file', FileRouter)
 
